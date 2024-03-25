@@ -24,7 +24,6 @@
   position: sticky;
 }
 
-
 .main-container {
   box-sizing: border-box;
   margin: 0 auto;
@@ -55,7 +54,6 @@
 
 .store-wall {
   height: 100%;
-  // flex: 0 0 190px;
   overflow-y: auto;
   width: 200px;
   position: sticky;
@@ -149,7 +147,6 @@ ul {
   justify-content: space-around;
   position: relative;
   margin-top: 10px;
-
 }
 
 @media (max-width: 1024px) {
@@ -184,7 +181,6 @@ ul {
 .text-input {
   position: relative;
 }
-
 
 #search-input {
   padding: 0 48px;
@@ -279,7 +275,6 @@ main {
 .border-adress {
   border-radius: 24px;
   color: aliceblue;
-  // padding-top: 8px;
 }
 
 .border-adress:hover {
@@ -290,7 +285,6 @@ main {
   text-decoration: none;
 }
 
-
 .card:hover {
   transform: scale(1.02);
   cursor: pointer;
@@ -300,8 +294,6 @@ main {
   padding: 0px;
   padding-left: 10px;
   height: 75px;
-  // overflow: hidden;
-  // text-overflow: ellipsis;
 
   h5 {
     margin-bottom: 5px;
@@ -316,11 +308,8 @@ main {
   .badge-container {
     max-width: 40%;
     max-height: 25px;
-    //background-color: aqua;
     position: absolute;
     bottom: 10px;
-
-    //   overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 
@@ -369,34 +358,4 @@ img {
 .flex-center {
   display: flex;
   align-items: center;
-}
-
-
-// ------------------------------- footer ------------------
-
-.nav-hover-underline li.nav-item a:hover {
-  text-decoration: underline;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  padding: 40px 130px 0px 130px;
-
-
-  // background-color: #212529; // same as nav
-  background-color: #202020;
-  color: white;
-
-  footer {
-    width: 1500px;
-  }
-
-  h5 {
-    color: rgba(255, 255, 255, 0.72);
-  }
-
-  ul>li>a {
-    color: white !important;
-  }
 }
