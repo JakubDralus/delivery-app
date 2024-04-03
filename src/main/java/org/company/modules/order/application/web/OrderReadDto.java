@@ -7,8 +7,6 @@ import lombok.Setter;
 import org.company.modules.order.domain.Status;
 
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor

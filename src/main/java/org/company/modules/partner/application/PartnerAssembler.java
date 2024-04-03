@@ -38,6 +38,7 @@ public class PartnerAssembler implements IAssembler<Partner, PartnerDto> {
         partnerDto.setType(partner.getType());
         return partnerDto;
     }
+    
     public PartnerReadDto toReadDto(Partner partner) {
         PartnerReadDto partnerReadDto = new PartnerReadDto();
         partnerReadDto.setName(partner.getName());

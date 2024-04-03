@@ -20,6 +20,7 @@ public class DeliveryMan {
 
     private String workingArea;
     private String accountNumber;
+    
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

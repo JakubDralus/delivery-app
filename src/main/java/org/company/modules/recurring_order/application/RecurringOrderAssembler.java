@@ -47,6 +47,7 @@ public class RecurringOrderAssembler implements IAssembler<RecurringOrder, Recur
         updateCustomer(entityDto, entity);
         updateProduct(entityDto, entity);
     }
+    
     private void updateAddress(RecurringOrderDto recurringOrderDto, RecurringOrder recurringOrder) {
         Address addressStart = addressRepository.findById(recurringOrderDto.getAddressStart().getId()).orElseThrow(null);
         recurringOrder.setAddressStart(addressStart);
@@ -58,6 +59,7 @@ public class RecurringOrderAssembler implements IAssembler<RecurringOrder, Recur
         Product product = productRepository.findById(recurringOrderDto.getProduct().getId()).orElseThrow(null);
         recurringOrder.setProduct(product);
     }
+    
     private void updateCustomer( RecurringOrderDto recurringOrderDto, RecurringOrder recurringOrder) {
         User user = userRepository.findById(recurringOrderDto.getCustomer().getId()).orElseThrow(null);
         recurringOrder.setCustomer(user);

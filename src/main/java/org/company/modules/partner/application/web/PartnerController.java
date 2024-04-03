@@ -1,16 +1,11 @@
 package org.company.modules.partner.application.web;
 
-import jakarta.servlet.http.Part;
-import org.company.modules.auth.web.RegisterPartnerDto;
 import org.company.modules.partner.application.PartnerService;
-import org.company.shared.aplication.web.GenericController;
 import org.company.shared.aplication.web.IController;
 import org.company.shared.photos.PhotoService;
 import org.company.shared.photos.PhotoType;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -62,6 +57,7 @@ public class PartnerController implements IController {
     public PartnerDto getPartnerByName(@PathVariable String name) {
         return service.getPartnerByName(name);
     }
+    
     @GetMapping("/photo/{photoName}")
     public ResponseEntity<byte []> getPhoto(@PathVariable String photoName) {
         byte [] photo = photoService.readPhoto(PhotoType.partner, photoName);

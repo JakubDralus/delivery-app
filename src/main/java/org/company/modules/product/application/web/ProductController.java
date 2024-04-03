@@ -47,10 +47,12 @@ public class ProductController implements IController {
     public ProductDto updateItem(@PathVariable Long id, @RequestBody ProductDto productDto) {
         return service.updateItem(id, productDto);
     }
+    
     @GetMapping("/from/{partnerName}")
     public List<ProductReadDto> productsFromPartner(@PathVariable String partnerName) {
         return service.productsFromPartner(partnerName);
     }
+    
     @GetMapping("/photo/{photoName}")
     public ResponseEntity<byte []> getPhoto(@PathVariable String photoName) {
         byte [] photo = photoService.readPhoto(PhotoType.product, photoName);

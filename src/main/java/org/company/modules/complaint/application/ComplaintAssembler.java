@@ -8,15 +8,14 @@ import org.company.modules.user.application.UserAssembler;
 import org.company.modules.user.domain.User;
 import org.company.modules.user.domain.UserRepository;
 import org.company.shared.aplication.IAssembler;
-import org.hibernate.sql.Update;
 import org.springframework.stereotype.Component;
+
 
 @Component
 @AllArgsConstructor
 public class ComplaintAssembler implements IAssembler<Complaint, ComplaintDto> {
     private final UserAssembler userAssembler;
     private final UserRepository userRepository;
-
 
     @Override
     public  ComplaintDto toDto(Complaint complaint) {
@@ -53,8 +52,8 @@ public class ComplaintAssembler implements IAssembler<Complaint, ComplaintDto> {
         complaint.setCreationDate(complaintDto.getCreationDate());
         updateUser(complaintDto, complaint);
     }
-    private void updateUser(ComplaintDto complaintDto, Complaint complaint)
-    {
+    
+    private void updateUser(ComplaintDto complaintDto, Complaint complaint) {
         User user = userRepository.findById(complaintDto.getUser().getId()).orElse(null);
         complaint.setUser(user);
     }

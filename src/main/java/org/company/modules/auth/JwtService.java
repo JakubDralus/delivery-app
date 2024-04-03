@@ -8,7 +8,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,7 +17,6 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    
     private static final String SECRET_KEY = "2b32ea2d805a2fc88a51dbea22d7998873d6d6a1d54be974ca1d7726a76809c4"; //todo: hide it
     
     public String extractUsername(String token) {
@@ -75,5 +73,4 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-    
 }

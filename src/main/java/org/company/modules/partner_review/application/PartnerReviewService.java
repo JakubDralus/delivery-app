@@ -1,6 +1,5 @@
 package org.company.modules.partner_review.application;
 
-import org.company.modules.partner_review.application.web.PartnerReviewController;
 import org.company.modules.partner_review.application.web.PartnerReviewDto;
 import org.company.modules.partner_review.application.web.PartnerReviewReadDto;
 import org.company.modules.partner_review.domain.PartnerReview;

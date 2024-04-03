@@ -12,16 +12,16 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
+
 @Service
 public class PhotoService{
     @Value("${app.photoPath}")
     private String directoryPathInConfig;
     private String directoryPath;
     private  Path path;
+    
     @PostConstruct
-    private void init()
-    {
-
+    private void init() {
         directoryPath = System.getProperty("user.dir")+'\\'+directoryPathInConfig;
         path = Path.of(directoryPath).toAbsolutePath().normalize();
         Path tmpPath = Path.of(path.toString()+'\\'+PhotoType.partner).toAbsolutePath().normalize();
@@ -50,6 +50,7 @@ public class PhotoService{
             throw new RuntimeException(e);
         }
     }
+    
     public String  savePhoto(MultipartFile photo, PhotoType photoType) {
         String orgName = photo.getOriginalFilename();
         String extension = orgName.substring(orgName.lastIndexOf("."));
@@ -62,8 +63,8 @@ public class PhotoService{
             }
         return photoName;
     }
-    public byte[] readPhoto(PhotoType photoType, String photoName)
-    {
+    
+    public byte[] readPhoto(PhotoType photoType, String photoName) {
         Path targetLocation = path.resolve(directoryPath+'\\'+photoType+"\\"+photoName);
         byte[] imageBytes;
         try {
@@ -74,8 +75,7 @@ public class PhotoService{
         return imageBytes;
     }
 
-    public static String getMediaType(String path)
-    {
+    public static String getMediaType(String path) {
         switch (path.substring(path.lastIndexOf(".")))
         {
             case ".jpg":

@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.company.modules.partner.application.web.PartnerDto;
 import org.company.modules.user.application.web.UserDto;
 
-
 @Getter
 @Setter
 public class PartnerReviewDto {

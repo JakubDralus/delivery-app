@@ -15,14 +15,12 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class ProductService extends GenericService<Product, ProductDto, Long,  ProductRepository, ProductAssembler>
-{
+public class ProductService extends GenericService<Product, ProductDto, Long,  ProductRepository, ProductAssembler> {
     private final ProductRepository productRepository;
     private final ProductAssembler productAssembler;
     private final PhotoService photoService;
     
-    public ProductService(ProductRepository productRepository, ProductAssembler productAssembler, PhotoService photoService)
-    {
+    public ProductService(ProductRepository productRepository, ProductAssembler productAssembler, PhotoService photoService) {
         super(productRepository,productAssembler);
         this.productRepository = productRepository;
         this.productAssembler = productAssembler;
@@ -33,8 +31,7 @@ public class ProductService extends GenericService<Product, ProductDto, Long,  P
         return productRepository.findByPartnerName(partnerName)
                 .stream().map(productAssembler::toReadDto).collect(Collectors.toList());
     }
-
-
+    
     public ProductDto saveItem(MultipartFile photo, ProductDto productDto) {
         productDto.setPhotoPath(photoService.savePhoto(photo, PhotoType.product));
         return super.saveItem(productDto);

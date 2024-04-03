@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class DeliveryManAssembler implements IAssembler<DeliveryMan, DeliveryManDto> {
     private final UserAssembler userAssembler;
     private final UserRepository userRepository;
+    
     @Override
     public DeliveryManDto toDto(DeliveryMan deliveryMan) {
         DeliveryManDto deliveryManDto = new DeliveryManDto();
@@ -22,7 +23,6 @@ public class DeliveryManAssembler implements IAssembler<DeliveryMan, DeliveryMan
         deliveryManDto.setWorkingArea(deliveryMan.getWorkingArea());
         deliveryManDto.setAccountNumber(deliveryMan.getAccountNumber());
         deliveryManDto.setUser(userAssembler.toDto(deliveryMan.getUser()));
-
         return deliveryManDto;
     }
 

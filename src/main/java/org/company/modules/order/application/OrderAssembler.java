@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 @Component
 @AllArgsConstructor
 public class OrderAssembler implements IAssembler<Order, OrderDto> {
@@ -41,8 +42,7 @@ public class OrderAssembler implements IAssembler<Order, OrderDto> {
         orderDto.setAddressStart(addressAssembler.toDto(order.getAddressStart()));
         orderDto.setCustomer(userAssembler.toDto(order.getCustomer()));
         orderDto.setAddressEnd(addressAssembler.toDto(order.getAddressEnd()));
-        if(order.getDeliveryMan() != null)
-        {
+        if(order.getDeliveryMan() != null) {
             orderDto.setDeliveryMan(deliveryManAssembler.toDto(order.getDeliveryMan()));
         }
         orderDto.setPartner(partnerAssembler.toDto(order.getPartner()));
@@ -60,7 +60,7 @@ public class OrderAssembler implements IAssembler<Order, OrderDto> {
         updateAddresses(orderDto,order);
         updateCustomer(orderDto, order);
         updatePartner(orderDto, order);
-        if(orderDto.getDeliveryMan() == null){
+        if (orderDto.getDeliveryMan() == null){
             order.setDeliveryMan(null);
         }
         else {
@@ -86,14 +86,12 @@ public class OrderAssembler implements IAssembler<Order, OrderDto> {
         orderReadDto.setCustomerTelephoneNumber(order.getCustomer().getTelephoneNumber());
         orderReadDto.setPartner(order.getPartner().getName());
         orderReadDto.setPartnerPhotoPath(order.getPartner().getPhotoPath());
-        if(order.getDeliveryMan() == null)
-        {
+        if(order.getDeliveryMan() == null) {
             orderReadDto.setDeliveryManId(null);
             orderReadDto.setDeliveryManFirstName(null);
             orderReadDto.setDeliveryManLastName(null);
         }
-        else
-        {
+        else {
             orderReadDto.setDeliveryManId(order.getDeliveryMan().getUser().getId());
             orderReadDto.setDeliveryManFirstName(order.getDeliveryMan().getUser().getFirstName());
             orderReadDto.setDeliveryManLastName(order.getDeliveryMan().getUser().getLastName());
@@ -104,7 +102,7 @@ public class OrderAssembler implements IAssembler<Order, OrderDto> {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         orderReadDto.setCreationDate(simpleDateFormat.format(creationDate));
         Date completionDate = order.getCompletionDate();
-        if(completionDate != null)orderReadDto.setCompletionDate(simpleDateFormat.format(completionDate));
+        if(completionDate != null) orderReadDto.setCompletionDate(simpleDateFormat.format(completionDate));
         orderReadDto.setStatus(order.getStatus());
         orderReadDto.setDistanceInKm(order.getDistanceInKm());
         orderReadDto.setRating(order.getRating());

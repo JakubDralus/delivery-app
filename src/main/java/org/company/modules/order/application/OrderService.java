@@ -11,17 +11,17 @@ import org.company.modules.order.domain.Status;
 import org.company.shared.aplication.GenericService;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
 public class OrderService extends GenericService<Order, OrderDto, Long, OrderRepository,OrderAssembler> {
     private final DeliveryManRepository deliveryManRepository;
+    
     public OrderService(OrderRepository repository, OrderAssembler assembler, DeliveryManRepository deliveryManRepository) {
         super(repository, assembler);
         this.deliveryManRepository = deliveryManRepository;
@@ -35,12 +35,11 @@ public class OrderService extends GenericService<Order, OrderDto, Long, OrderRep
                 .collect(Collectors.toList());
         return list;
     }
-    public OrderReadDto setStatusDone(Long id, Status status)
-    {
+    
+    public OrderReadDto setStatusDone(Long id, Status status) {
         Order order = repository.findById(id).orElse(null);
         OrderReadDto orderReadDto = null;
-        if(order != null)
-        {
+        if(order != null) {
             order.setStatus(status);
             if(status == Status.done)order.setCompletionDate(new Date());
             orderReadDto = assembler.toReadDto(repository.save(order));
@@ -48,8 +47,7 @@ public class OrderService extends GenericService<Order, OrderDto, Long, OrderRep
         return orderReadDto;
     }
 
-    public List<OrderReadDto> getAllWithByCustomerId(@PathVariable Long id)
-    {
+    public List<OrderReadDto> getAllWithByCustomerId(@PathVariable Long id) {
         List<OrderReadDto> list = repository.findByCustomer_IdOrderByCreationDateDesc(id)
                 .stream()
                 .map(assembler::toReadDto)
@@ -57,12 +55,12 @@ public class OrderService extends GenericService<Order, OrderDto, Long, OrderRep
         return list;
     }
 
-    public OrderReadDto setOrderRating(Long id, Long rating)
-    {
+    public OrderReadDto setOrderRating(Long id, Long rating) {
         Order order = repository.findById(id).orElse(null);
         order.setRating(rating);
         return assembler.toReadDto(repository.save(order));
     }
+    
     public List<OrderReadDto> getOrdersByPartnerUserId(Long partnerUserId) {
         List<OrderReadDto> list = repository.findByPartner_Owner_Id(partnerUserId)
                 .stream()

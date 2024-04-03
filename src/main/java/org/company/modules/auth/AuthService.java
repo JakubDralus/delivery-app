@@ -23,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.text.SimpleDateFormat;
 
 
-
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -112,12 +111,10 @@ public class AuthService {
         if (!isEmailAvailable(partnerDto.getEmail())) {
             return RegisterResponseDto.builder().message("email not available").build();
         }
-        if(!isPhotoFormatCorrect(photo))
-        {
+        if (!isPhotoFormatCorrect(photo)) {
             return RegisterResponseDto.builder().message("photo do not have a suitable extension").build();
         }
         Role role = roleRepository.findById(2L).orElse(null);
-
 
         // create user
         User user = User.builder()
@@ -172,7 +169,6 @@ public class AuthService {
                 .password(passwordEncoder.encode(deliveryManDto.getPassword()))
                 .role(role)
                 .build();
-        
         userRepository.save(user);
         
         // create delivery man
@@ -196,9 +192,9 @@ public class AuthService {
         User user = userRepository.findByEmail(providedEmail).orElse(null);
         return user == null;
     }
+    
     private boolean isPhotoFormatCorrect(MultipartFile photo) {
-        if(photo != null)
-        {
+        if(photo != null) {
             String name = photo.getOriginalFilename();
             String extension = name.substring(name.lastIndexOf("."));
             return extension.equals(".png") || extension.equals(".jpg") || extension.equals(".jpeg");

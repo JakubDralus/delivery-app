@@ -2,8 +2,6 @@ package org.company.modules.auth.web;
 
 import lombok.RequiredArgsConstructor;
 import org.company.modules.auth.AuthService;
-import org.company.modules.partner.application.web.PartnerDto;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

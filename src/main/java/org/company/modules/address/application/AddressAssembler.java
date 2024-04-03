@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AddressAssembler implements IAssembler<Address, AddressDto> {
-    
     @Override
     public AddressDto toDto(Address address) {
         AddressDto addressDto = new AddressDto();

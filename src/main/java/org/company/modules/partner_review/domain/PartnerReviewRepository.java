@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 public interface PartnerReviewRepository extends JpaRepository<PartnerReview,Long>, JpaSpecificationExecutor<PartnerReview> {
-    
     List<PartnerReview> findByPartnerId(Long partnerId);
 }

@@ -7,9 +7,10 @@ import java.util.List;
 
 
 @AllArgsConstructor
-public class GenericController<Dto, EntityKey, Service extends IService<Dto, EntityKey>> implements  IController{
+public class GenericController<Dto, EntityKey, Service extends IService<Dto, EntityKey>> implements IController {
     
     public final Service service;
+    
     @GetMapping
     public List<Dto> getAllItems() {
         return service.getAllItems();
@@ -34,5 +35,4 @@ public class GenericController<Dto, EntityKey, Service extends IService<Dto, Ent
     public Dto updateItem(@PathVariable EntityKey id, @RequestBody Dto user) {
         return service.updateItem(id, user);
     }
-
 }

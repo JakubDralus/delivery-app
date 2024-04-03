@@ -91,10 +91,6 @@ public class UserAssembler implements IAssembler<User, UserDto> {
         }
         
         // for each address in user add its id and the address obj to a map
-//        HashMap<Long, Address> addresses = new HashMap<>();
-//        user.getAddresses().forEach(
-//                address -> addresses.put(address.getId(), address)
-//        );
         Map<Long, Address> addresses = user.getAddresses()
                 .stream()
                 .collect(Collectors.toMap(Address::getId, Function.identity()));

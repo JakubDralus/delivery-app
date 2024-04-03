@@ -13,10 +13,12 @@ import org.company.modules.product.domain.Product;
 public class ProductOrder {
     @EmbeddedId
     private ProductOrderPk id;
+    
     @ManyToOne
     @MapsId("productId")
     @JoinColumn(name = "product_id")
     private Product product;
+    
     @ManyToOne
     @MapsId("orderId")
     @JoinColumn(name = "order_id")

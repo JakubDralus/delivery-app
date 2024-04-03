@@ -4,29 +4,25 @@ import org.company.modules.partner.application.web.PartnerDto;
 import org.company.modules.partner.application.web.PartnerReadDto;
 import org.company.modules.partner.domain.Partner;
 import org.company.modules.partner.domain.PartnerRepository;
-import org.company.modules.partner.domain.PartnerSpecification;
 import org.company.modules.user.application.UserService;
 import org.company.shared.aplication.GenericService;
-import org.company.shared.photos.PhotoType;
-import org.springframework.data.jpa.domain.Specification;
 import org.company.shared.photos.PhotoService;
+import org.company.shared.photos.PhotoType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Service
 public class PartnerService extends GenericService<Partner, PartnerDto, Long, PartnerRepository, PartnerAssembler> {
-
     private final PartnerRepository partnerRepository;
     private final PartnerAssembler partnerAssembler;
     protected final UserService userService;
     protected final PhotoService photoService;
+    
     public PartnerService(PartnerRepository repository, PartnerAssembler assembler, UserService userService, PhotoService photoService) {
         super(repository, assembler);
         this.partnerRepository = repository;
@@ -52,6 +48,7 @@ public class PartnerService extends GenericService<Partner, PartnerDto, Long, Pa
         Partner partner = partnerRepository.findByName(name).orElse(null);
         return partnerAssembler.toDto(partner);
     }
+    
     @Transactional
     public PartnerDto removeItem(Long id) {
         PartnerDto partnerDto = super.removeItem(id);
