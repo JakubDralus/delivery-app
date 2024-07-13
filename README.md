@@ -9,7 +9,7 @@ acquire more technological skills in web applications development especially Spr
 
 1. [About](#about)
 2. [Website](#website)
-3. [Main Product Features](#main-product-freatures)
+3. [Main Product Features](#main-product-features)
 4. [Technologies](#technologies)
 5. [Tools](#tools)
 6. [References](#references)
@@ -50,7 +50,7 @@ Couple of screenshots of the website.
 ![image](https://github.com/JakubDralus/delivery-app/assets/129612952/288fdc18-d1a7-4b0c-9b94-4b1446e5698f)
 
 
-## Main Product Freatures
+## Main Product Features
 
 - **User Account**
   - Allows new users to register and manage their account.
